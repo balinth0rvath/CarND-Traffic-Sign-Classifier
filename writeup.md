@@ -190,23 +190,41 @@ Ahead only
  | .00				    | Turn left ahead      							|
 
 [ 1 35 17 25  1 11]
-Sign type:35
-TopKV2(values=array([  1.00000000e+00,   3.96002447e-32,   4.62191321e-35,
-         3.41261309e-37,   1.58715100e-38], dtype=float32), indices=array([35,  9, 36, 28, 34], dtype=int32))
-Sign type:17
-TopKV2(values=array([  1.00000000e+00,   4.02211888e-20,   8.55112125e-27,
-         3.92682681e-31,   4.52041074e-36], dtype=float32), indices=array([17, 14, 41,  9, 32], dtype=int32))
-Sign type:25
-TopKV2(values=array([  1.00000000e+00,   1.69894140e-32,   1.19622269e-37,
-         9.61808218e-38,   0.00000000e+00], dtype=float32), indices=array([25, 31,  5, 22,  0], dtype=int32))
-Sign type:1
-TopKV2(values=array([  1.00000000e+00,   3.90297039e-08,   1.22071864e-08,
-         5.06465980e-09,   1.79206994e-09], dtype=float32), indices=array([ 1, 39, 33,  5,  2], dtype=int32))
-Sign type:11
-TopKV2(values=array([  7.68933237e-01,   2.31066808e-01,   9.33732605e-11,
-         2.47597992e-12,   2.71594596e-13], dtype=float32), indices=array([11, 30, 23, 21,  7], dtype=int32))
+No entry
+| Probability         	|     Prediction	        					| 
+ |:---------------------:|:---------------------------------------------:| 
+ | 1.00         			| No entry   									| 
+ | .00     				| Stop 										|
+ | .00					| End of no passing											|
+ | .00	      			| No passing					 				|
+ | .00				    | End of all speed and passing limits      							|
 
- For the second image ... 
+Road work
+| Probability         	|     Prediction	        					| 
+ |:---------------------:|:---------------------------------------------:| 
+ | 1.00         			| Road work   									| 
+ | .00     				| Wild animals crossing 										|
+ | .00					| 	Speed limit 80										|
+ | .00	      			| Bumpy road					 				|
+ | .00				    | Speed limit 20      							|
+
+Speed limit 30 (Speed limit 80 misclassified)
+| Probability         	|     Prediction	        					| 
+ |:---------------------:|:---------------------------------------------:| 
+ | 1.00         			| Speed limit 30   									| 
+ | .00     				| Keep left 										|
+ | .00					| 	Turn right ahead										|
+ | .00	      			| Speed limit 80					 				|
+ | .00				    | Speed limit 50      							|
+
+Right-of-way at the next intersection (not valid sign misclassified)
+| Probability         	|     Prediction	        					| 
+ |:---------------------:|:---------------------------------------------:| 
+ | 0.76         			| Right-of-way at the next intersection   									| 
+ | 0.23     				| Beware of ice/snow 										|
+ | 0.00					| 	Slippery road										|
+ | 0.00	      			| Double curve					 				|
+ | 0.00				    | Speed limit 100      							|
 
  ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
  #### 1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
