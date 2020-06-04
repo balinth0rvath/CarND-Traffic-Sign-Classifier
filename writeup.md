@@ -120,6 +120,17 @@ Learning rate was set to 0.01 first. With this value error decreased very fast b
  #### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
  Here are seven German traffic signs that I found on the web. There is a 'Chicken warning' sign explained later.
+ 
+| Sign			        |     Difficulty	        					| 
+ |:---------------------:|:---------------------------------------------:| 
+ | Speed limit (30km/h)      		| Difficulties: brightning, contrast lowered, image rotated   									| 
+ | Speed limit (80km/h)      		| Difficulties: oPartially appears an other sign   									| 
+ | Stop     			| Difficulties: angle of photo										|
+ | No entry					| Difficulties: angle of photo, back of other signs									|
+ | Road work			| nothing  							|
+ | Ahead only			| nothing    							|
+ | Chicken warning			|   class set not contains it    							|
+ 
 
 <p float="left">
   <img src="./writeup_images/1orig.jpg" width="100" />
@@ -144,7 +155,7 @@ I ran into a strange issue and I don't understand, why. First, I have used a mod
  | Speed limit (80km/h)      		| Speed limit (80km/h)   									| 
  | Stop     			| Stop 										|
  | No entry					| No entry											|
- | 100 km/h	      		| Bumpy Road					 				|
+ | 100 km/h	      		| 100 km/h					 				|
  | Road work			| Road work      							|
  | Ahead only			| Ahead only      							|
  | Chicken warning			|   Right-of-way at the next intersection    							|
