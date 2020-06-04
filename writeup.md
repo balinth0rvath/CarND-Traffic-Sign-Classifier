@@ -27,7 +27,7 @@
 
  #### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
 
-I couldn't test if the images appears well in the workspace writeup.md. I have made a copy of it in my repo, it is recommended to check the writeup there:
+I couldn't test if the images appear well in the workspace writeup.md. I have made a copy of it in my repo, it is recommended to check the writeup there:
 
 https://github.com/windmip/CarND-Traffic-Sign-Classifier/blob/master/writeup.md
 
