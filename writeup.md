@@ -92,8 +92,8 @@ https://github.com/windmip/CarND-Traffic-Sign-Classifier/blob/master/writeup.md
  #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
  
  I used Adam optimizer for optimizing my models output. It is based on adam algorythm, an extension of Stochastic Gradient Descent. The table below describes the hyperparameters:
- | Parameter name | Description	| Value | Tuning considerations |
- |:--------------:|:-----------:|:-----:|:-------:|
+ | Parameter name | Description	| Value | 
+ |:--------------:|:-----------:|:-----:|
  |epochs|The number of training runs on each batch| 36|
  |batch size|The number of images in each batch| 512 |
  |mu|The mean of truncate mean distribtion used in W matrices| 0 |
