@@ -186,7 +186,7 @@ Speed limit 30
 Ahead only
 | Probability         	|     Prediction	        					| 
  |:---------------------:|:---------------------------------------------:| 
- | 1.00         			| Stop sign   									| 
+ | 1.00         			| Ahead only   									| 
  | .00     				| No passing 										|
  | .00					| Go straight or right											|
  | .00	      			| Children crossing					 				|
