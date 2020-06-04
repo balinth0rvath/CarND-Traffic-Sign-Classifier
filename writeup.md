@@ -17,7 +17,8 @@
 
  [image1]: ./writeup_images/visualization1.png "Visualization - occurences"
  [image2]: ./writeup_images/visualization2.png "Visualization - sign classes"
-
+ [image10]: ./writeup_images/visualization3.png "Visualization - converted external sign"
+ 
  ## Rubric Points
  ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
 
@@ -112,32 +113,26 @@ Validation accuracy on consecutive epochs was alternating around a slightly emer
  
 Mean of distribution being in the center helps gradient descent to work better. Decreasing and increasing the width of distribution caused lower accuracy, so I left in unchanged
  
-Learning rate was set to 0.01 first. With this value error decreased very fast but the increasing of validation accuracy suddenty stopped after a few epochs, so I lowered learning rate and set the number of epochs bigger. These two settings caused approx 3% boost in validation accuracy |
- 
-
- If an iterative approach was chosen:
- * What was the first architecture that was tried and why was it chosen?
- * What were some problems with the initial architecture?
- * How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
- * Which parameters were tuned? How were they adjusted and why?
- * What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
-
- If a well known architecture was chosen:
- * What architecture was chosen?
- * Why did you believe it would be relevant to the traffic sign application?
- * How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
-
+Learning rate was set to 0.01 first. With this value error decreased very fast but the increasing of validation accuracy suddenty stopped after a few epochs, so I lowered learning rate and set the number of epochs bigger. These two settings caused approx 3% boost in validation accuracy.
 
  ### Test a Model on New Images
 
  #### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
- Here are five German traffic signs that I found on the web:
+ Here are seven German traffic signs that I found on the web. There is a 'Chicken warning' sign explained later.
 
- ![alt text][image4] ![alt text][image5] ![alt text][image6] 
- ![alt text][image7] ![alt text][image8]
+<p float="left">
+  <img src="./writeup_images/1orig.jpg" width="100" />
+  <img src="./writeup_images/5orig.jpg" width="100" />
+  <img src="./writeup_images/14orig.jpg" width="100" />
+  <img src="./writeup_images/17orig.jpg" width="100" />
+  <img src="./writeup_images/25orig.jpg" width="100" />
+  <img src="./writeup_images/35orig.jpg" width="100" />
+  <img src="./writeup_images/43orig.jpg" width="100" />  
+</p>
 
- The first image might be difficult to classify because ...
+ 
+I ran into a strange issue and still don`t undestand it. First, I have used a model from a different training session with a validation accuracy of 96%. It performed 93.5% accuracy on test set and 57% on external test set. This state is saved under the name 'lenet' Then I messed up everything and had problems restoring it, so I trained my model again. I changed just the epoch from from 32 to 36 nothing else. This last training included in this writeup had a validation accuracy of 95.7%, test accuracy of 94.5% and 100% accuracy on external test set. Softmax topk showed almost 100% certainity on every sign... I changed all the external signs to another ones, but included a chicken warning sign to self-check the model. It resulted 100% accuracy with almost 100% certainity on it but on the chicken-sign, the model thought it is 75% "Right-of-way at the next intersection" or perhaps 25% "Beware of ice/snow" or something else.
 
  #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
