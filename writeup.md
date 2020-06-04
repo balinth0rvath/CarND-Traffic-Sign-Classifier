@@ -126,7 +126,7 @@ Learning rate was set to 0.01 first. With this value error decreased very fast b
 
  #### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
- Here are seven German traffic signs that I found on the web. There is a 'Chicken warning' sign explained later.
+ Here are six German traffic signs that I found on the web. There is a 'Chicken warning' sign explained later.
  
 | Sign			        |     Difficulty	        					| 
  |:---------------------:|:---------------------------------------------:| 
