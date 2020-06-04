@@ -132,7 +132,7 @@ Learning rate was set to 0.01 first. With this value error decreased very fast b
 </p>
 
  
-I ran into a strange issue and still don`t undestand it. First, I have used a model from a different training session with a validation accuracy of 96%. It performed 93.5% accuracy on test set and 57% on external test set. This state is saved under the name 'lenet' Then I messed up everything and had problems restoring it, so I trained my model again. I changed just the epoch from from 32 to 36 nothing else. This last training included in this writeup had a validation accuracy of 95.7%, test accuracy of 94.5% and 100% accuracy on external test set. Softmax topk showed almost 100% certainity on every sign... I changed all the external signs to another ones, but included a chicken warning sign to self-check the model. It resulted 100% accuracy with almost 100% certainity on it but on the chicken-sign, the model thought it is 75% "Right-of-way at the next intersection" or perhaps 25% "Beware of ice/snow" or something else.
+I ran into a strange issue and I don't understand, why. First, I have used a model from a different training session with a validation accuracy of 96%. It performed 93.5% accuracy on test set and 57% on external test set (7 signs) with approx 50% 40% 30% softmax results on first three largest values shown with topk. This state is saved under the name 'lenet' Then I messed up everything and had problems restoring it, so I trained my model again. I changed just the epoch from from 32 to 36 nothing else. The state is saved under 'lenet5'. This last training was included in this writeup had a validation accuracy of 95.7%, test accuracy of 94.5% and 100% accuracy on external test set. Softmax topk showed almost 100% certainity on every external signs... __I changed all the external signs to another ones__, and included a "chicken warning" sign to self-check the model. __resulted 100% accuracy with almost 100% certainity on them__ but on the chicken-warning-sign, the model thought it is 75% "Right-of-way at the next intersection" or perhaps 25% "Beware of ice/snow" or something else.
 
  #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
@@ -140,14 +140,18 @@ I ran into a strange issue and still don`t undestand it. First, I have used a mo
 
  | Image			        |     Prediction	        					| 
  |:---------------------:|:---------------------------------------------:| 
- | Stop Sign      		| Stop sign   									| 
- | U-turn     			| U-turn 										|
- | Yield					| Yield											|
+ | Speed limit (30km/h)      		| Speed limit (30km/h)   									| 
+ | Speed limit (80km/h)      		| Speed limit (80km/h)   									| 
+ | Stop     			| Stop 										|
+ | No entry					| No entry											|
  | 100 km/h	      		| Bumpy Road					 				|
- | Slippery Road			| Slippery Road      							|
+ | Road work			| Road work      							|
+ | Ahead only			| Ahead only      							|
+ | Chicken warning			|   Right-of-way at the next intersection    							|
+ 
 
 
- The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+ The model was able to correctly guess 6 of the 6 traffic signs, which gives an accuracy of 100%. This is bigger than the accuracy on test set. increasing the sample numbers should be done to get a more acceptable number below 100%  
 
  #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
