@@ -27,6 +27,10 @@
 
  #### 1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
 
+I couldn't test if the images appears well in the workspace writeup.md. I have made a copy of it in my repo, it is recommended to check the writeup there:
+
+https://github.com/windmip/CarND-Traffic-Sign-Classifier/blob/master/writeup.md
+
  The submitted workspace contains the required files:
  * CarND-Traffic-Sign-Classifier.ipynb
  * report.html
@@ -36,7 +40,7 @@
 
  #### 1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
 
- The data set contains cropped photos taken from german traffic signs converted to small rgb images.
+ The data set contains cropped photos taken from german traffic signs converted to small RGB images.
  In the code cell #3 I made a report describing the size input data set:
 
  | Set           | Size         |
@@ -44,7 +48,7 @@
  | Training      | 34799        |
  | Validation    |  4410        |
  | Test          | 12360        |
- | External test |     7        |
+ | External test |     6        |
 
  Properties of each image are 32x32 24bit RGB, so shape is (32,32,3)
 
@@ -52,12 +56,12 @@
 
  #### 2. Include an exploratory visualization of the dataset.
 
- I have made two visualization image. The first one shows each sign class, the second one describes the data set population by unique classes
+ I have made two visualization image. The first one shows each sign classes, the second one describes the data set population by unique classes
 
  Unique classes
  ![alt text][image2]
 
- Occurences by unique classes in each set
+ Occurences by unique classes in each set. It should be noted that there are peaks on some class types in the training set, It could affect the result.
  ![alt text][image1]
 
  ### Design and Test a Model Architecture
@@ -166,10 +170,7 @@ Here are the results of the prediction:
  #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
  The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
-
  The model is absolute sure what a sign is, even when misclassifies it. Except on the last one, the model has a bit uncertainity on it.
-
-[1 35 17 25  1 11]
 
 Speed limit 30
  | Probability         	|     Prediction	        					| 
@@ -189,7 +190,6 @@ Ahead only
  | .00	      			| Children crossing					 				|
  | .00				    | Turn left ahead      							|
 
-[ 1 35 17 25  1 11]
 No entry
 | Probability         	|     Prediction	        					| 
  |:---------------------:|:---------------------------------------------:| 
