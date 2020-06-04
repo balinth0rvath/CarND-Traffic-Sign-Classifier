@@ -17,7 +17,7 @@
 
  [image1]: ./writeup_images/visualization1.png "Visualization - occurences"
  [image2]: ./writeup_images/visualization2.png "Visualization - sign classes"
- [image10]: ./writeup_images/visualization3.png "Visualization - converted external sign"
+ [image3]: ./writeup_images/visualization3.png "Visualization - converted external sign"
  
  ## Rubric Points
  ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -125,7 +125,6 @@ Learning rate was set to 0.01 first. With this value error decreased very fast b
  |:---------------------:|:---------------------------------------------:| 
  | Speed limit (30km/h)      		| Brightness, contrast lowered, image rotated   									| 
  | Speed limit (80km/h)      		| An other sign appears partially  									| 
- | Stop     			| Angle of photo										|
  | No entry					| Angle of photo, back of other signs									|
  | Road work			| Nothing  							|
  | Ahead only			| Angle of photo    							|
@@ -141,29 +140,33 @@ Learning rate was set to 0.01 first. With this value error decreased very fast b
   <img src="./writeup_images/43orig.jpg" width="100" />  
 </p>
 
+The result after the images were loaded:
+![alt text][image3]
+
  #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
-I ran into a strange issue and I don't understand, why. First, I have used a model from a different training session with a validation accuracy of 96%. It performed 93.5% accuracy on test set and 57% on external test set (7 signs) with approx 50% 40% 30% softmax results on first three largest values shown with topk. This state is saved under the name 'lenet' Then I messed up everything and had problems restoring it, so I trained my model again. I changed just the epoch from from 32 to 36 nothing else. The state is saved under 'lenet5'. This last training was included in this writeup had a validation accuracy of 95.7%, test accuracy of 94.5% and 100% accuracy on external test set. Softmax topk showed almost 100% certainity on every external signs... __I changed all the external signs to another ones__, and included a "chicken warning" sign to self-check the model. __resulted 100% accuracy with almost 100% certainity on them__ but on the chicken-warning-sign, the model thought it is 75% "Right-of-way at the next intersection" or perhaps 25% "Beware of ice/snow" or something else.
+I ran into a strange issue with prediction certainity and I don't understand, why. First, I have used a model from a different training session with a validation accuracy of 96%. It performed 93.5% accuracy on test set and 57% on external test set (7 signs) with approx 50% 40% 30% softmax results on first three largest values shown with topk. This state is saved under the name 'lenet' Then I messed up everything and had problems restoring it, so I trained my model again. I changed just the epoch from from 32 to 36 nothing else. The state is saved under 'lenet5'. This last training was included in this writeup had a validation accuracy of 95.7%, test accuracy of 94.5% and 75% accuracy on external test set. Softmax topk showed almost 100% certainity on every external signs... I changed all the external signs to another ones, and included a "chicken warning" sign to self-check the model. Resulted 75% accuracy with almost 100% certainity on them(on the misclassified too!) but on the chicken-warning-sign, the model thought it is 75% "Right-of-way at the next intersection" or perhaps 25% "Beware of ice/snow" or something else.
 
 Here are the results of the prediction:
 
  | Image			        |     Prediction	        					| 
  |:---------------------:|:---------------------------------------------:| 
  | Speed limit (30km/h)      		| Speed limit (30km/h)   									| 
- | Speed limit (80km/h)      		| Speed limit (80km/h)   									| 
- | Stop     			| Stop 										|
+ | Speed limit (80km/h)      		| Speed limit (30km/h)   									| 
  | No entry					| No entry											|
  | Road work			| Road work      							|
  | Ahead only			| Ahead only      							|
  | Chicken warning			|   Right-of-way at the next intersection    							|
  
- The model was able to correctly guess 6 of the 6 traffic signs, which gives an accuracy of 100%. This is bigger than the accuracy on test set. increasing the sample numbers should be done to get a more acceptable number below 100%  
+ The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 75%. This is lower than the accuracy on test set. 
 
  #### 3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
  The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
- For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+ The model is absolute sure what a sign is, even when misclassifies it. Except on the last one, the model has a bit uncertainity on it.
+
+[1 35 17 25  1 11]
 
  | Probability         	|     Prediction	        					| 
  |:---------------------:|:---------------------------------------------:| 
