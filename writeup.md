@@ -17,7 +17,7 @@
 
  [image1]: ./writeup_images/visualization1.png "Visualization - occurences"
  [image2]: ./writeup_images/visualization2.png "Visualization - sign classes"
- [image3]: ./writeup_images/visualization3.png "Visualization - converted external sign"
+ [image3]: ./writeup_images/external_signs.png "Visualization - converted external sign"
  
  ## Rubric Points
  ### Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -140,8 +140,7 @@ Learning rate was set to 0.01 first. With this value error decreased very fast b
  The original images from the web:
 <p float="left">
   <img src="./writeup_images/1orig.jpg" width="100" />
-  <img src="./writeup_images/5orig.jpg" width="100" />
-  <img src="./writeup_images/14orig.jpg" width="100" />
+  <img src="./writeup_images/5orig.jpg" width="100" />  
   <img src="./writeup_images/17orig.jpg" width="100" />
   <img src="./writeup_images/25orig.jpg" width="100" />
   <img src="./writeup_images/35orig.jpg" width="100" />
@@ -153,7 +152,7 @@ The result after the images were loaded:
 
  #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
-I ran into a strange issue with prediction certainity and I don't understand, why. Maybe it is a numerical stability issue. First, I have used a model from a different training session with a validation accuracy of 96%. It performed 93.5% accuracy on test set and 57% on external test set (7 signs) with approx 50% 40% 30% softmax results on first three largest values shown with topk. This state is saved under the name 'lenet' Then I messed up everything and had problems restoring it, so I trained my model again. I changed just the epoch from from 32 to 36 nothing else. The state is saved under 'lenet5'. This last training was included in this writeup had a validation accuracy of 95.7%, test accuracy of 94.5% and 75% accuracy on external test set. Softmax topk showed almost 100% certainity on every external signs... I changed all the external signs to another ones, and included a "chicken warning" sign to self-check the model. Resulted 75% accuracy with almost 100% certainity on them(on the misclassified too!) but on the chicken-warning-sign, the model thought it is 75% "Right-of-way at the next intersection" or perhaps 25% "Beware of ice/snow" or something else.
+I ran into a strange issue with prediction certainity and I don't understand, why. Maybe it is a numerical stability issue. First, I have used a model from a different training session with a validation accuracy of 96%. It performed 93.5% accuracy on test set and 57% on external test set (7 signs) with approx 50% 40% 30% softmax results on first three largest values shown with topk. This state is saved under the name 'lenet' Then I messed up everything and had problems restoring it, so I trained my model again. I changed just the epoch from from 32 to 36 nothing else. The state is saved under 'lenet5'. This last training was included in this writeup has a validation accuracy of 95.7%, test accuracy of 94.5% and 75% accuracy on external test set. Softmax topk showed almost 100% certainity on every external signs... I changed all the external signs to another ones, and included a "chicken warning" sign to self-check the model. Resulted 75% accuracy with almost 100% certainity on them(on the misclassified too!) but on the chicken-warning-sign, the model thought it is 75% "Right-of-way at the next intersection" or perhaps 25% "Beware of ice/snow" or something else.
 
 Also strange that the misclassified image had no difficulties with angle, brightness or else.
 
