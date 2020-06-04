@@ -91,14 +91,14 @@ https://github.com/windmip/CarND-Traffic-Sign-Classifier/blob/master/writeup.md
 
  #### 3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
  
- I used Adam optimizer for optimizing my models output. It is based on adam algorythm, an extension of Stochastic Gradient Descent. The table below describes the hyperparameters:
+ I used Adam optimizer for optimizing my models output. It is based on adam algorithm, an extension of Stochastic Gradient Descent. The table below describes the hyperparameters:
  | Parameter name | Description	| Value | 
  |:--------------:|:-----------:|:-----:|
  |epochs|The number of training runs on each batch| 36|
  |batch size|The number of images in each batch| 512 |
  |mu|The mean of truncate mean distribtion used in W matrices| 0 |
  |sigma|The standard deviation of the normal distribution| 0.1 | 
- |rate|0.0028|learing rate of optimizing algorytm| 
+ |rate|0.0028|learing rate of optimizing algoritm| 
 
 
  #### 4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
@@ -110,10 +110,13 @@ My final model results were:
  * Test set accuracy of 0.945
  * External test set accuracy of 0.8
 
+I was modifying only one type of hyperparameter on each training session to not get lost.
+
 I found that the depth of first and second convolution layer is not enough for a 3-depth input, so I modified them to 16 and 32, rescpectively. Fully connected layer inputs were adepted to them.
 
-Validation accuracy on consecutive epochs was alternating around a slightly emerging result, so I set a large number on it
- Increasing the batch size from 128 to 512 resulted about 1% bigger validation accuracy
+Validation accuracy on consecutive epochs was alternating around a slightly emerging result, so I set a large number on epoch number.
+
+Increasing the batch size from 128 to 512 resulted about 1% bigger validation accuracy
  
 Mean of distribution being in the center helps gradient descent to work better. Decreasing and increasing the width of distribution caused lower accuracy, so I left in unchanged
  
