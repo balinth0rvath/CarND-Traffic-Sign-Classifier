@@ -124,12 +124,13 @@ Learning rate was set to 0.01 first. With this value error decreased very fast b
 | Sign			        |     Difficulty	        					| 
  |:---------------------:|:---------------------------------------------:| 
  | Speed limit (30km/h)      		| Brightness, contrast lowered, image rotated   									| 
- | Speed limit (80km/h)      		| An other sign appears partially  									| 
+ | Speed limit (80km/h)      		| Nothing  									| 
  | No entry					| Angle of photo, back of other signs									|
  | Road work			| Nothing  							|
  | Ahead only			| Angle of photo    							|
  | Chicken warning			|   class set not contains it    							|
  
+ The original images from the web:
 <p float="left">
   <img src="./writeup_images/1orig.jpg" width="100" />
   <img src="./writeup_images/5orig.jpg" width="100" />
@@ -145,7 +146,9 @@ The result after the images were loaded:
 
  #### 2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
 
-I ran into a strange issue with prediction certainity and I don't understand, why. First, I have used a model from a different training session with a validation accuracy of 96%. It performed 93.5% accuracy on test set and 57% on external test set (7 signs) with approx 50% 40% 30% softmax results on first three largest values shown with topk. This state is saved under the name 'lenet' Then I messed up everything and had problems restoring it, so I trained my model again. I changed just the epoch from from 32 to 36 nothing else. The state is saved under 'lenet5'. This last training was included in this writeup had a validation accuracy of 95.7%, test accuracy of 94.5% and 75% accuracy on external test set. Softmax topk showed almost 100% certainity on every external signs... I changed all the external signs to another ones, and included a "chicken warning" sign to self-check the model. Resulted 75% accuracy with almost 100% certainity on them(on the misclassified too!) but on the chicken-warning-sign, the model thought it is 75% "Right-of-way at the next intersection" or perhaps 25% "Beware of ice/snow" or something else.
+I ran into a strange issue with prediction certainity and I don't understand, why. Maybe it is a numerical stability issue. First, I have used a model from a different training session with a validation accuracy of 96%. It performed 93.5% accuracy on test set and 57% on external test set (7 signs) with approx 50% 40% 30% softmax results on first three largest values shown with topk. This state is saved under the name 'lenet' Then I messed up everything and had problems restoring it, so I trained my model again. I changed just the epoch from from 32 to 36 nothing else. The state is saved under 'lenet5'. This last training was included in this writeup had a validation accuracy of 95.7%, test accuracy of 94.5% and 75% accuracy on external test set. Softmax topk showed almost 100% certainity on every external signs... I changed all the external signs to another ones, and included a "chicken warning" sign to self-check the model. Resulted 75% accuracy with almost 100% certainity on them(on the misclassified too!) but on the chicken-warning-sign, the model thought it is 75% "Right-of-way at the next intersection" or perhaps 25% "Beware of ice/snow" or something else.
+
+Also strange that the misclassified image had no difficulties with angle, brightness or else.
 
 Here are the results of the prediction:
 
@@ -168,14 +171,40 @@ Here are the results of the prediction:
 
 [1 35 17 25  1 11]
 
+Speed limit 30
  | Probability         	|     Prediction	        					| 
  |:---------------------:|:---------------------------------------------:| 
- | .60         			| Stop sign   									| 
- | .20     				| U-turn 										|
- | .05					| Yield											|
- | .04	      			| Bumpy Road					 				|
- | .01				    | Slippery Road      							|
+ | .98         			| Speed limit 30 									| 
+ | .02     				| Speed limit 70 										|
+ | .00					| No entry											|
+ | .00	      			| Speed limit 20					 				|
+ | .00				    | Speed limit 120      							|
 
+Ahead only
+| Probability         	|     Prediction	        					| 
+ |:---------------------:|:---------------------------------------------:| 
+ | 1.00         			| Stop sign   									| 
+ | .00     				| No passing 										|
+ | .00					| Go straight or right											|
+ | .00	      			| Children crossing					 				|
+ | .00				    | Turn left ahead      							|
+
+[ 1 35 17 25  1 11]
+Sign type:35
+TopKV2(values=array([  1.00000000e+00,   3.96002447e-32,   4.62191321e-35,
+         3.41261309e-37,   1.58715100e-38], dtype=float32), indices=array([35,  9, 36, 28, 34], dtype=int32))
+Sign type:17
+TopKV2(values=array([  1.00000000e+00,   4.02211888e-20,   8.55112125e-27,
+         3.92682681e-31,   4.52041074e-36], dtype=float32), indices=array([17, 14, 41,  9, 32], dtype=int32))
+Sign type:25
+TopKV2(values=array([  1.00000000e+00,   1.69894140e-32,   1.19622269e-37,
+         9.61808218e-38,   0.00000000e+00], dtype=float32), indices=array([25, 31,  5, 22,  0], dtype=int32))
+Sign type:1
+TopKV2(values=array([  1.00000000e+00,   3.90297039e-08,   1.22071864e-08,
+         5.06465980e-09,   1.79206994e-09], dtype=float32), indices=array([ 1, 39, 33,  5,  2], dtype=int32))
+Sign type:11
+TopKV2(values=array([  7.68933237e-01,   2.31066808e-01,   9.33732605e-11,
+         2.47597992e-12,   2.71594596e-13], dtype=float32), indices=array([11, 30, 23, 21,  7], dtype=int32))
 
  For the second image ... 
 
